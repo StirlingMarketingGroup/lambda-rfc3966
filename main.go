@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"os"
 	"strings"
@@ -22,12 +21,7 @@ func handler(phoneNumber string) (string, error) {
 
 	parsedPhone := strings.TrimPrefix(phonenumbers.Format(p, phonenumbers.RFC3966), "tel:")
 
-	jsonPhone, err := json.Marshal(parsedPhone)
-	if err != nil {
-		return "", err
-	}
-
-	return string(jsonPhone), nil
+	return parsedPhone, nil
 }
 
 func main() {
